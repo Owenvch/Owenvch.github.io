@@ -1,0 +1,158 @@
+/* ANIMACIÓN: Simulación de flujo de datos digital para CS */
+@keyframes data-flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+#digital-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Patrón de puntos sutil */
+    background: radial-gradient(#ccc 1px, transparent 1px),
+                radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 10px 10px;
+    opacity: 0.05; /* Muy sutil, apenas perceptible */
+    z-index: -1;
+    animation: data-flow 40s linear infinite;
+}
+
+/* ESTILOS BASE (MINIMALISTA) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #fcfcfc;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté sobre la animación */
+}
+
+/* IMAGEN DE PERFIL */
+.image-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.profile-image {
+    width: 150px; /* Tamaño de imagen fijo */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    border: 3px solid #007bff; /* Borde de color de acento */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* SECCIONES Y TIPOGRAFÍA */
+.name-title {
+    color: #1a1a1a;
+    font-size: 3em;
+    font-weight: 300; /* Fuente delgada para minimalismo */
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.role-subtitle {
+    font-size: 1.1em;
+    color: #007bff; /* Color de acento profesional */
+    margin-top: 5px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.separator {
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0 40px 0;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #1a1a1a;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.item-entry {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
+}
+
+.item-entry.highlight {
+    border-left-color: #007bff; /* Destacar la sección de excelencia */
+    background-color: #f7f9ff;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.institution {
+    font-style: italic;
+    color: #555;
+    margin-top: 2px;
+}
+
+.dates {
+    font-weight: 500;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* ENLACES Y LISTAS */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #aaa;
+    font-size: 0.8em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    .name-title {
+        font-size: 2.5em;
+    }
+}
