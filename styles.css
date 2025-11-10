@@ -1,80 +1,69 @@
+/* Definición de variables CSS */
 :root {
-  /* Paleta Azul para acento, Neutros para base */
-  color-scheme: light dark;
-  --bg-light: #f9f9f9;
-  --bg-dark: #121212; 
-  --text-light: #222;
-  --text-dark: #e6edf3; /* Texto principal brillante */
-  --accent: #3b82f6; /* Azul brillante */
-  --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  --dark-card-bg: #1e1e1e;
-  
-  /* Nuevas variables de contraste para Dark Mode */
-  --dark-section-bg: #1e1e1e; /* Fondo de tarjetas más claro que el fondo principal */
-  --dark-subtle-text: #a0a0a0; /* Gris sutil para texto secundario */
+  /* VARIABLES PÚBLICAS */
+  --accent: #3b82f6; 
+  --transition-speed: 0.4s;
+  --header-height: 70vh;
 }
 
+/* --- TEMA CLARO (Default: html[data-theme="light"]) --- */
+[data-theme="light"] {
+  --bg-color: #f9f9f9;
+  --text-color: #222;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --subtle-border: #e0e0e0;
+  --pill-bg: #e0e0e0;
+  --pill-text: #1a1a1a;
+  --highlight-bg: #f0f8ff; /* Fondo claro para destacar */
+}
+
+/* --- TEMA OSCURO (html[data-theme="dark"]) --- */
+[data-theme="dark"] {
+  --bg-color: #121212; /* Fondo casi negro */
+  --text-color: #f0f0f0; /* Texto legible y brillante */
+  --card-bg: #1e1e1e; /* Fondo de tarjetas más claro que el fondo principal */
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  --subtle-border: #333;
+  --pill-bg: #333;
+  --pill-text: #f0f0f0;
+  --highlight-bg: #282828; /* Fondo oscuro para destacar */
+}
+
+/* --- ESTILOS BASE Y TRANSICIONES --- */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-light);
-  transition: background 0.4s, color 0.4s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background var(--transition-speed), color var(--transition-speed);
 }
 
-/* --- DARK MODE SETTINGS --- */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-dark); /* Texto principal claro */
-  }
-  .profile-card {
-    background: rgba(40, 40, 40, 0.4);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  }
-  
-  /* Encabezados de Sección y Subtítulos: Asegurar que sean visibles */
-  main h3, .intro h1, .intro h2 {
-    color: #ffffff; /* Blanco puro para títulos y subtítulos */
-  }
-  
-  /* Skills/Pills y elementos secundarios */
-  .skills-grid span, .data-list li, .highlight-education {
-    background-color: var(--dark-section-bg);
-    color: var(--text-dark); 
-    border: 1px solid #333; /* Borde suave para definir el bloque */
-  }
-  
-  /* Enlaces y acentos */
-  .links a {
-    color: var(--accent);
-  }
-  .connections-list a {
-    color: var(--dark-subtle-text); /* Enlaces de compañeros en gris */
-  }
-  .connections-list a:hover {
-    color: var(--accent);
-  }
-  
-  /* Footer */
-  footer {
-    color: var(--dark-subtle-text);
-  }
-  
-  /* Corrección de color de texto en listas dentro de cards */
-  .data-list li strong {
-    color: var(--text-dark); 
-  }
+/* Estilos para el botón de cambio de tema */
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--subtle-border);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 1000;
+    transition: background var(--transition-speed);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* --- GENERAL STYLES (NO CHANGES TO HTML STRUCTURE) --- */
-
+/* --- HEADER AND HERO SECTION --- */
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  min-height: var(--header-height);
   padding: 2rem;
+  position: relative; /* Para posicionar el botón */
 }
 
 .profile-card {
@@ -83,13 +72,12 @@ header {
   align-items: center;
   gap: 3rem;
   max-width: 1000px;
-  /* El estilo Neumórfico suave permanece */
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border-radius: 1.5rem;
   padding: 2.5rem;
   box-shadow: var(--card-shadow);
-  transition: transform 0.4s ease;
+  transition: transform var(--transition-speed), background var(--transition-speed);
 }
 
 .profile-card:hover {
@@ -98,7 +86,7 @@ header {
 
 .profile-photo {
   width: 180px;
-  height: 240px; 
+  height: 240px;
   object-fit: cover;
   border-radius: 4px;
   border: 4px solid var(--accent);
@@ -109,7 +97,7 @@ header {
   font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.1;
-  color: var(--text-light); /* Asegura el color en modo claro */
+  color: var(--text-color);
 }
 
 .intro h2 {
@@ -131,16 +119,17 @@ header {
   text-decoration: none;
   color: var(--accent);
   font-weight: 600;
-  transition: color 0.3s;
+  transition: color var(--transition-speed);
 }
 
 .links a:hover {
   color: #60a5fa;
 }
 
+/* --- MAIN CONTENT --- */
 main {
   max-width: 800px;
-  margin: 0 auto 5rem auto; 
+  margin: 0 auto 5rem auto;
   padding: 0 2rem;
 }
 
@@ -150,7 +139,7 @@ section {
 
 h3 {
   border-bottom: 2px solid var(--accent);
-  color: var(--text-light); 
+  color: var(--text-color);
   display: inline-block;
   padding-bottom: 0.3rem;
   margin-bottom: 1.5rem;
@@ -164,20 +153,22 @@ h3 {
 }
 .data-list li {
   padding: 10px;
-  background-color: var(--bg-light);
-  border: 1px solid #e0e0e0;
+  background-color: var(--card-bg); /* Usamos el color de la tarjeta */
+  border: 1px solid var(--subtle-border);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   font-size: 0.95rem;
+  transition: background var(--transition-speed);
 }
 
 /* Educación */
 .highlight-education {
-  background-color: var(--bg-light);
+  background-color: var(--highlight-bg); /* Usamos color de destaque */
   border-left: 4px solid var(--accent);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
+  transition: background var(--transition-speed);
 }
 
 /* Skills/Habilidades (Pills) */
@@ -188,16 +179,17 @@ h3 {
 }
 
 .skills-grid span {
-  background: #e0e0e0;
-  color: #1a1a1a;
+  background: var(--pill-bg);
+  color: var(--pill-text);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 0.9em;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: background var(--transition-speed), color var(--transition-speed);
 }
 .skills-grid span:hover {
-  background-color: #c0c0c0;
+  background-color: var(--accent);
+  color: white;
 }
 
 
@@ -212,12 +204,14 @@ h3 {
 }
 
 .connections-list a {
-  color: #555;
+  color: var(--text-color);
+  opacity: 0.7;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--transition-speed);
 }
 .connections-list a:hover {
   color: var(--accent);
+  opacity: 1;
   text-decoration: underline;
 }
 
@@ -229,18 +223,14 @@ footer {
   opacity: 0.7;
 }
 
-/* --- ANIMACIONES DE ENTRADA --- */
+/* --- ANIMACIONES DE ENTRADA (CSS) --- */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeIn 1s ease forwards;
 }
 
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.4s; }
-.fade-in:nth-child(3) { animation-delay: 0.6s; }
-.fade-in:nth-child(4) { animation-delay: 0.8s; }
-.fade-in:nth-child(5) { animation-delay: 1.0s; }
+/* (Las reglas nth-child para animation-delay deben ser revisadas en el HTML final) */
 
 @keyframes fadeIn {
   to {
