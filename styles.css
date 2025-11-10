@@ -1,12 +1,17 @@
 :root {
   /* Paleta Azul para acento, Neutros para base */
+  color-scheme: light dark;
   --bg-light: #f9f9f9;
-  --bg-dark: #121212; /* Negro más suave que #0d1117 */
+  --bg-dark: #121212; 
   --text-light: #222;
-  --text-dark: #e6edf3;
+  --text-dark: #e6edf3; /* Texto principal brillante */
   --accent: #3b82f6; /* Azul brillante */
   --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
   --dark-card-bg: #1e1e1e;
+  
+  /* Nuevas variables de contraste para Dark Mode */
+  --dark-section-bg: #1e1e1e; /* Fondo de tarjetas más claro que el fondo principal */
+  --dark-subtle-text: #a0a0a0; /* Gris sutil para texto secundario */
 }
 
 body {
@@ -21,31 +26,49 @@ body {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--bg-dark);
-    color: var(--text-dark);
+    color: var(--text-dark); /* Texto principal claro */
   }
   .profile-card {
     background: rgba(40, 40, 40, 0.4);
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   }
-  .skills-grid span, .data-list li strong {
-    background-color: var(--dark-card-bg);
+  
+  /* Encabezados de Sección y Subtítulos: Asegurar que sean visibles */
+  main h3, .intro h1, .intro h2 {
+    color: #ffffff; /* Blanco puro para títulos y subtítulos */
   }
-  .highlight-education {
-    background-color: var(--dark-card-bg);
+  
+  /* Skills/Pills y elementos secundarios */
+  .skills-grid span, .data-list li, .highlight-education {
+    background-color: var(--dark-section-bg);
+    color: var(--text-dark); 
+    border: 1px solid #333; /* Borde suave para definir el bloque */
   }
+  
+  /* Enlaces y acentos */
   .links a {
     color: var(--accent);
   }
-  /* Enlaces de conexión en modo oscuro */
   .connections-list a {
-    color: #bbb;
+    color: var(--dark-subtle-text); /* Enlaces de compañeros en gris */
   }
   .connections-list a:hover {
     color: var(--accent);
   }
+  
+  /* Footer */
+  footer {
+    color: var(--dark-subtle-text);
+  }
+  
+  /* Corrección de color de texto en listas dentro de cards */
+  .data-list li strong {
+    color: var(--text-dark); 
+  }
 }
 
-/* --- HEADER AND HERO SECTION --- */
+/* --- GENERAL STYLES (NO CHANGES TO HTML STRUCTURE) --- */
+
 header {
   display: flex;
   justify-content: center;
@@ -60,6 +83,7 @@ header {
   align-items: center;
   gap: 3rem;
   max-width: 1000px;
+  /* El estilo Neumórfico suave permanece */
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 1.5rem;
@@ -74,9 +98,9 @@ header {
 
 .profile-photo {
   width: 180px;
-  height: 240px; /* Rectángulo vertical */
+  height: 240px; 
   object-fit: cover;
-  border-radius: 4px; /* Bordes menos redondos */
+  border-radius: 4px;
   border: 4px solid var(--accent);
 }
 
@@ -85,6 +109,7 @@ header {
   font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.1;
+  color: var(--text-light); /* Asegura el color en modo claro */
 }
 
 .intro h2 {
@@ -113,10 +138,9 @@ header {
   color: #60a5fa;
 }
 
-/* --- MAIN CONTENT --- */
 main {
   max-width: 800px;
-  margin: 0 auto 5rem auto; /* Más margen abajo */
+  margin: 0 auto 5rem auto; 
   padding: 0 2rem;
 }
 
@@ -126,7 +150,7 @@ section {
 
 h3 {
   border-bottom: 2px solid var(--accent);
-  color: var(--text-light); /* Asegura que el color sea visible */
+  color: var(--text-light); 
   display: inline-block;
   padding-bottom: 0.3rem;
   margin-bottom: 1.5rem;
@@ -175,18 +199,16 @@ h3 {
 .skills-grid span:hover {
   background-color: #c0c0c0;
 }
-@media (prefers-color-scheme: dark) {
-  .skills-grid span {
-    background: var(--dark-card-bg);
-    color: var(--text-dark);
-  }
-}
+
 
 /* Conexiones */
 .connections-list {
+  list-style: none;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
+  margin-top: 20px;
 }
 
 .connections-list a {
