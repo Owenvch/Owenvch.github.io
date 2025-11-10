@@ -1,3 +1,4 @@
+/* --- ANIMACIONES GLOBALES (CS Theme) --- */
 @keyframes binary-flow {
     0% { background-position: 0 0; }
     100% { background-position: -200px 0; }
@@ -7,7 +8,7 @@
     100% { opacity: 1; transform: translateY(0); }
 }
 
-#digital-background {
+#gradient-bg { /* Corregido: Usando #gradient-bg como tienes en el HTML */
     position: fixed;
     top: 0;
     left: 0;
@@ -24,7 +25,8 @@
 
 /* --- ESTILOS BASE Y CONTENEDOR --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Agregué las fuentes que importaste en el HTML */
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -32,7 +34,7 @@ body {
     color: #1a1a1a;
 }
 
-.container {
+.main-container { /* Corregido: Usando .main-container como tienes en el HTML */
     max-width: 900px;
     margin: 50px auto;
     padding: 30px;
@@ -44,19 +46,20 @@ body {
 }
 
 /* Aplicar animaciones de entrada */
-.section-block, .profile-header, footer {
+/* Corregido: Usando .section y .hero para las animaciones */
+.section, .hero, footer {
     animation: fadeInSlide 0.7s ease-out forwards;
     opacity: 0;
 }
-.profile-header { animation-delay: 0.1s; }
-#datos-generales { animation-delay: 0.4s; }
-#educacion { animation-delay: 0.6s; }
-#cursos { animation-delay: 0.8s; }
-#contacto { animation-delay: 1.0s; }
+.hero { animation-delay: 0.1s; }
+.section:nth-child(2) { animation-delay: 0.4s; } /* Datos Clave */
+.section:nth-child(3) { animation-delay: 0.6s; } /* Educación */
+.section:nth-child(4) { animation-delay: 0.8s; } /* Habilidades */
+.section:nth-child(5) { animation-delay: 1.0s; } /* Conexiones */
 
 
-/* --- CABECERA DE PERFIL (Diseño Asimétrico) --- */
-.profile-header {
+/* --- CABECERA DE PERFIL (.hero) --- */
+.hero { /* Corregido: Usando .hero */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,48 +69,45 @@ body {
     margin-bottom: 30px;
 }
 
-.info-block {
+.hero-text { /* Corregido: Usando .hero-text */
     flex: 2; /* Ocupa más espacio que la imagen */
 }
 
-.name-title {
+.name { /* Corregido: Usando .name */
+    font-family: 'Space Grotesk', sans-serif; /* Fuente personalizada */
     color: #1a1a1a;
     font-size: 3.5em;
-    font-weight: 200; 
+    font-weight: 600; /* Más peso para un título fuerte */
     margin: 0;
     line-height: 1.1;
 }
 
-.role-subtitle {
+.subtitle { /* Corregido: Usando .subtitle */
     font-size: 1.2em;
     color: #555;
     margin-top: 5px;
     font-weight: 400;
 }
 
-.divider {
-    height: 2px;
-    width: 60px;
-    background-color: #1a1a1a;
-    margin: 15px 0;
-}
+/* El divisor ya no existe en el nuevo HTML, lo eliminé del CSS */
 
-.summary-text {
+.description { /* Corregido: Usando .description */
     font-size: 1em;
     color: #333;
     line-height: 1.5;
+    margin-top: 15px;
 }
 
-/* --- IMAGEN (Rectángulo Vertical Estético) --- */
-.image-container {
+/* --- IMAGEN (.hero-image) --- */
+.hero-image { /* Corregido: Usando .hero-image */
     flex: 1;
     max-width: 200px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border: 3px solid #1a1a1a; /* Marco delgado negro */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); 
+    border: 3px solid #1a1a1a;
     overflow: hidden;
 }
 
-.profile-image {
+.hero-image img { /* Aplicando estilos al IMG dentro de .hero-image */
     width: 100%;
     height: 280px; /* Definición de altura vertical */
     object-fit: cover;
@@ -115,7 +115,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.profile-image:hover {
+.hero-image img:hover {
     transform: scale(1.05); /* Zoom sutil al pasar el ratón */
 }
 
@@ -130,13 +130,13 @@ h2 {
 }
 
 /* Tarjetas de Datos (Grid) */
-.grid-layout {
+.data-grid { /* Corregido: Usando .data-grid */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
-.data-card {
+.card { /* Corregido: Usando .card */
     background-color: #f0f0f0;
     padding: 15px;
     border-radius: 4px;
@@ -145,31 +145,42 @@ h2 {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Educación y Distinciones */
-.item-entry {
+/* Educación y Distinciones (Timeline) */
+.timeline-item { /* Corregido: Usando .timeline-item */
     margin-bottom: 20px;
     padding-left: 15px;
     border-left: 3px solid #ccc;
     transition: border-left-color 0.3s ease;
 }
-.item-entry:hover {
+.timeline-item:hover {
     border-left-color: #1a1a1a; 
 }
-.item-entry.highlight {
+.timeline-item.highlight {
     background-color: #f0f0f0;
     padding: 15px;
     border-radius: 4px;
     border-left-color: #1a1a1a; 
 }
+.timeline-item h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+.timeline-item .institution, .timeline-item .date {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 0;
+}
 
 /* Habilidades (Pills) */
-.skills-grid {
+.skills { /* Corregido: Usando .skills */
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
 }
-.skills-grid span {
+.skills span {
     background: #e0e0e0;
     color: #1a1a1a;
     padding: 8px 15px;
@@ -178,18 +189,18 @@ h2 {
     font-weight: 500;
     transition: background-color 0.3s ease;
 }
-.skills-grid span:hover {
+.skills span:hover {
     background-color: #ccc;
 }
 
 /* Botones de Contacto */
-.contact-links {
-    margin-top: 20px;
+.contact-group { /* Corregido: Usando .contact-group */
+    margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
-.contact-btn {
+.btn { /* Corregido: Usando .btn */
     display: inline-block;
     padding: 10px 20px;
     background-color: #1a1a1a;
@@ -198,26 +209,36 @@ h2 {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.1s ease;
 }
-.contact-btn:hover {
+.btn:hover {
     background-color: #333;
     transform: translateY(-2px);
 }
 
-/* --- ENLACES Y FOOTER --- */
-.connections-list li {
+/* Conexiones */
+.connections { /* Corregido: Usando .connections */
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.connections li {
     padding-left: 0;
     border-left: none;
 }
-.connections-list a {
+.connections a {
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease;
 }
-.connections-list a:hover {
+.connections a:hover {
     color: #1a1a1a;
     text-decoration: underline;
 }
 
+/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 20px 0;
@@ -229,26 +250,29 @@ footer {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .profile-header {
+    .hero {
         flex-direction: column;
         text-align: center;
     }
-    .info-block {
+    .hero-text {
         order: 2;
     }
-    .image-container {
+    .hero-image {
         order: 1;
         margin-bottom: 30px;
     }
-    .divider {
-        margin: 15px auto;
+    .contact-group {
+        justify-content: center;
+    }
+    .name {
+        font-size: 3em;
     }
 }
 @media (max-width: 480px) {
-    .name-title {
+    .name {
         font-size: 2.5em;
     }
-    .profile-image {
+    .hero-image img {
         height: 200px;
     }
 }
