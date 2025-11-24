@@ -52,9 +52,8 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     z-index: 1000;
-    transition: background var(--transition-speed), color var(--transition-speed), border var(--transition-speed); /* Añadida transición para color y borde */
+    transition: background var(--transition-speed);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    outline: none; /* Mejor estética al hacer clic */
 }
 
 /* --- HEADER AND HERO SECTION --- */
@@ -230,6 +229,8 @@ footer {
   transform: translateY(20px);
   animation: fadeIn 1s ease forwards;
 }
+
+/* (Las reglas nth-child para animation-delay deben ser revisadas en el HTML final) */
 
 @keyframes fadeIn {
   to {
